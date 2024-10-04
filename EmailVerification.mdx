@@ -1,0 +1,31 @@
+---
+title: EmailVerification
+---
+
+# EmailVerification
+
+A component for handling email verification processes, displaying appropriate messages based on the verification status.
+
+## Props
+
+- `searchParams` (optional): `Record<string, string>` - An object containing search parameters, expected to include a `code` for verification.
+- `fullPage` (optional): `boolean` - Determines whether the component should be displayed in full-page mode.
+
+## Example
+
+```tsx
+import { EmailVerification } from '@stackframe/stack';
+
+function VerificationPage() {
+  const searchParams = { code: 'verification_code_here' };
+
+  return (
+    <EmailVerification
+      searchParams={searchParams}
+      fullPage={true}
+    />
+  );
+}
+```
+
+This component handles various verification scenarios, including invalid links, expired links, and successful verifications. It uses internationalization (i18n) for text content and integrates with the Stack application context.
