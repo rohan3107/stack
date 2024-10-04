@@ -4,6 +4,28 @@ title: useStackApp
 
 # useStackApp
 
+A React hook that retrieves the current Stack app instance if authenticated.
+
+## Example
+
+```tsx
+import { useStackApp } from '@stackframe/stack';
+
+function MyComponent() {
+  const app = useStackApp();
+  
+  if (!app) {
+    return <div>Not authenticated</div>;
+  }
+  
+  // Use the app instance here
+}
+```---
+title: useStackApp
+---
+
+# useStackApp
+
 A React hook that retrieves the current Stack app based on the URL parameter.
 
 ## Example
