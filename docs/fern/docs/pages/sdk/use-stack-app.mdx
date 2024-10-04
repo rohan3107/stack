@@ -9,15 +9,9 @@ A React hook that retrieves the current Stack app based on the URL parameter.
 ## Example
 
 ```tsx
-import { useStackApp } from '@stackframe/stack';
+import { StackServerApp } from '@stackframe/stack';
 
-function MyComponent() {
-  const app = useStackApp();
-
-  if (!app) {
-    return <div>App not found</div>;
-  }
-
-  return <div>Current app: {app.slugifiedName}</div>;
-}
+export const stackServerApp = new StackServerApp({
+  tokenStore: "nextjs-cookie",
+});
 ```
