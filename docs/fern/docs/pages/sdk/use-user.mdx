@@ -4,20 +4,22 @@ title: useUser
 
 # useUser
 
-A React hook that fetches user data based on the provided user ID.
+A React hook that fetches user data based on the provided user ID or authentication options.
 
 ## Parameters
 
 - `userId`: `string` - The ID of the user to fetch.
+- `options` (optional): `Object`
+  - `or`: `'redirect' | 'throw'` - Specifies behavior when user is not authenticated.
 
 ## Returns
 
-An object containing:
-- `user`: `User | null` - The fetched user data, or null if not yet loaded.
-- `loading`: `boolean` - Indicates whether the user data is currently being fetched.
-- `error`: `Error | null` - Any error that occurred during fetching, or null if no error.
+- When called with `userId`: `{ user: User | null, loading: boolean, error: Error | null }`
+- When called with `options`: `User` (non-null)
 
-## Example
+## Examples
+
+### Fetch user by ID
 
 ```tsx
 import { useUser } from '@stackframe/stack';
@@ -37,31 +39,27 @@ function UserProfile({ userId }) {
   );
 }
 ```
-function MyComponent() {
-  const user = useUser({ or: "redirect" }); // user is garanteed to be non-null
+
+### Protect a component/page
+
+```jsx
+import { useUser } from "@stackframe/stack";
+
+function ProtectedComponent() {
+  const user = useUser({ or: 'redirect' });
   return <div>Hello, {user.name}</div>;
 }
 ```
 
-The same hook can also be used to protect a page. (You might also want to check out the server-side version [here](../getting-started/users.mdx))
+### Throw error if not authenticated
+
 ```jsx
 import { useUser } from "@stackframe/stack";
 
-function MyProtectedPage() {
-  useUser({ or: "redirect" });
-  return <div>You can only see this if you are authenticated</div>;
+function CriticalComponent() {
+  const user = useUser({ or: 'throw' });
+  return <div>Authenticated as: {user.name}</div>;
 }
 ```
 
-## Throw an error when not authenticated
-
-By passing `{ or: "throw" }` into the hook, it will throw an error if the user is not authenticated. This can be used for places where the user should never be unauthenticated if the app is working correctly.
-```jsx
-import { useUser } from "@stackframe/stack";
-
-function MyComponent() {
-  // user is garanteed to be non-null, but an error will be thrown if the user is not authenticated
-  const user = useUser({ or: "throw" }); 
-
-  return <div>Hello, {user.name}</div>;
-}
+Note: You might also want to check out the server-side version of authentication [here](../getting-started/users.mdx).

@@ -4,14 +4,20 @@ title: useStackApp
 
 # useStackApp
 
-A React hook that retrieves the current Stack app based on the URL parameter.
+A React hook that retrieves the current Stack app instance from the StackAppContext.
 
 ## Example
 
 ```tsx
-import { StackServerApp } from '@stackframe/stack';
+import { useStackApp } from '@stackframe/stack';
 
-export const stackServerApp = new StackServerApp({
-  tokenStore: "nextjs-cookie",
-});
+function MyComponent() {
+  const app = useStackApp();
+  
+  // Now you can use the app instance
+  // For example:
+  // const user = app.auth.getUser();
+}
 ```
+
+Note: Make sure to use this hook within a component that is wrapped by a StackAppProvider.
