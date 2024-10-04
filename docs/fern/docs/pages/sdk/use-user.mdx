@@ -1,4 +1,103 @@
 ---
+title: useUser
+---
+
+# useUser
+
+The `useUser` hook is used to fetch and return user data. It has two distinct use cases:
+
+1. Fetching the current authenticated user
+2. Fetching a specific user by ID
+
+## Fetching the Current User
+
+When used without parameters, `useUser` returns the current authenticated user or handles unauthenticated states.
+
+### Parameters
+
+- `options`: (Optional) An object with the following properties:
+  - `or`: `"redirect" | "throw"` - Specifies behavior when user is not authenticated.
+
+### Returns
+
+- Without options: `User | null`
+- With options: `User` (guaranteed non-null)
+
+### Examples
+
+#### Default Usage
+
+```jsx
+import { useUser } from "@stackframe/stack";
+
+function MyComponent() {
+  const user = useUser(); // user can be null
+  if (!user) {
+    return <div>Not authenticated</div>;
+  }
+  return <div>Hello, {user.name}</div>;
+}
+```
+
+#### Redirect When Not Authenticated
+
+```jsx
+import { useUser } from "@stackframe/stack";
+
+function MyComponent() {
+  const user = useUser({ or: "redirect" }); // user is guaranteed to be non-null
+  return <div>Hello, {user.name}</div>;
+}
+```
+
+#### Throw Error When Not Authenticated
+
+```jsx
+import { useUser } from "@stackframe/stack";
+
+function MyComponent() {
+  const user = useUser({ or: "throw" }); // throws error if not authenticated
+  return <div>Hello, {user.name}</div>;
+}
+```
+
+## Fetching a Specific User
+
+When used with a user ID parameter, `useUser` fetches data for a specific user.
+
+### Parameters
+
+- `id`: `string` - The ID of the user to fetch.
+
+### Returns
+
+An object with the following properties:
+- `user`: `User | null` - The user object if found, or null if not found.
+- `loading`: `boolean` - Indicates whether the user data is being fetched.
+- `error`: `Error | null` - Any error that occurred during the fetch, or null if no error.
+
+### Example
+
+```tsx
+import { useUser } from '@stackframe/stack';
+
+function UserProfile({ userId }) {
+  const { user, loading, error } = useUser(userId);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!user) return <div>User not found</div>;
+
+  return (
+    <div>
+      <h1>{user.name}</h1>
+      {/* Display other user details */}
+    </div>
+  );
+}
+```
+
+For more information about the `User` object, refer to the [User](./current-user.mdx) documentation.---
 slug: sdk/use-user
 ---
 
