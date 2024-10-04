@@ -1,0 +1,35 @@
+---
+title: UserButton
+---
+
+# UserButton
+
+A customizable button component for user-related actions.
+
+## Props
+
+- `showUserInfo`: `boolean` - Determines whether to display user information.
+- `colorModeToggle`: `object` - Configuration for the color mode toggle feature.
+- `extraItems`: `Array<{text: string, icon: React.ReactNode, onClick: Function}>` - Additional items to be displayed, each with text, icon, and onClick handler.
+
+## Example
+
+```tsx
+import { UserButton } from '@stackframe/stack';
+
+function App() {
+  return (
+    <UserButton
+      showUserInfo={true}
+      colorModeToggle={{}}
+      extraItems={[
+        {
+          text: 'Settings',
+          icon: <SettingsIcon />,
+          onClick: () => console.log('Settings clicked')
+        }
+      ]}
+    />
+  );
+}
+```

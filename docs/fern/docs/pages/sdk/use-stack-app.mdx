@@ -1,16 +1,17 @@
 ---
-slug: sdk/use-stack-app
+title: useStackApp
 ---
 
-The `useStackApp` hook returns the `StackClientApp` object that you can use to interact with the Stack API. If you want to learn more about the `StackClientApp` object, check out the [App](./stack-app.mdx) documentation.
+# useStackApp
 
-Example:
+A React hook that retrieves the current Stack app based on the URL parameter.
 
-```jsx
-import { useStackApp } from "@stackframe/stack";
+## Example
 
-function MyComponent() {
-  const stackApp = useStackApp();
-  return <div>Sign In URL: {stackApp.urls.signIn}</div>;
-}
+```tsx
+import { StackServerApp } from '@stackframe/stack';
+
+export const stackServerApp = new StackServerApp({
+  tokenStore: "nextjs-cookie",
+});
 ```
