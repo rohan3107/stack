@@ -1,0 +1,176 @@
+---
+title: AuthPage
+---
+
+# AuthPage
+
+Renders an authentication page for sign-in or sign-up functionality.
+
+## Props
+
+- `type`: `'sign-in' | 'sign-up'` - Determines whether the page is for signing in or signing up.
+- `noPasswordRepeat`: `boolean` (optional) - If true, removes the password repeat field in sign-up form.
+- `firstTab`: `'magic-link' | 'password'` (optional) - Sets the default active tab.
+- `fullPage`: `boolean` (optional) - If true, renders the component as a full page.
+- `automaticRedirect`: `boolean` (optional) - If true, automatically redirects after successful authentication.
+- `extraInfo`: `React.ReactNode` (optional) - Additional information to display below the form.
+- `mockProject`: `object` (optional) - Mock project configuration for testing purposes.
+  - `config`: `object`
+    - `signUpEnabled`: `boolean`
+    - `credentialEnabled`: `boolean`
+    - `magicLinkEnabled`: `boolean`
+    - `oauthProviders`: `Array<{ id: string }>`
+
+## Example
+
+```tsx
+import { AuthPage } from '@stackframe/stack';
+
+function MyAuthPage() {
+  return (
+    <AuthPage
+      type="sign-in"
+      fullPage={true}
+      automaticRedirect={true}
+      extraInfo={<p>Welcome to our app!</p>}
+    />
+  );
+}
+```---
+title: OAuthButtonGroup
+---
+
+# OAuthButtonGroup
+
+Renders a group of OAuth buttons for sign-in or sign-up.
+
+## Props
+
+- `type`: `'sign-in' | 'sign-up'` - Specifies whether the buttons are for sign-in or sign-up.
+- `mockProject` (optional): `{ config: { oauthProviders: { id: string }[] } }` - Mock project data for testing purposes.
+
+## Example
+
+```tsx
+import { OAuthButtonGroup } from '@stackframe/stack';
+
+function SignInPage() {
+  return (
+    <div>
+      <h1>Sign In</h1>
+      <OAuthButtonGroup type="sign-in" />
+    </div>
+  );
+}
+
+function SignUpPage() {
+  return (
+    <div>
+      <h1>Sign Up</h1>
+      <OAuthButtonGroup type="sign-up" />
+    </div>
+  );
+}
+```---
+title: MagicLinkSignIn
+---
+
+# MagicLinkSignIn
+
+A component that handles the magic link sign-in process, including email input and OTP verification.
+
+## Props
+
+This component does not accept any props.
+
+## Example
+
+```tsx
+import { MagicLinkSignIn } from '@stackframe/stack';
+
+function SignInPage() {
+  return (
+    <div>
+      <h1>Sign In</h1>
+      <MagicLinkSignIn />
+    </div>
+  );
+}
+```---
+title: UserButton
+---
+
+# UserButton
+
+A customizable user button component with optional user info display and color mode toggle.
+
+## Props
+
+- `showUserInfo`: `boolean` - Whether to display user information. Default is `false`.
+- `colorModeToggle`: `object` - Configuration for the color mode toggle.
+- `extraItems`: `Array<{ text: string, icon: React.ReactNode, onClick: Function }>` - Additional items to be displayed in the user menu.
+
+## Example
+
+```tsx
+import { UserButton } from '@stackframe/stack';
+
+function MyComponent() {
+  return (
+    <UserButton
+      showUserInfo={true}
+      colorModeToggle={{}}
+      extraItems={[
+        {
+          text: 'Custom Action',
+          icon: <CustomIcon />,
+          onClick: () => console.log('Custom action clicked')
+        }
+      ]}
+    />
+  );
+}
+```---
+title: StackTheme
+---
+
+# StackTheme
+
+A component that applies a theme to your Stack application.
+
+## Props
+
+- `theme` (optional): `ThemeConfig` - Custom theme configuration to override the default theme.
+  - `light`: Object containing color values for light mode.
+  - `dark`: Object containing color values for dark mode.
+  - `radius`: Value for border radius.
+- `children`: `React.ReactNode` - Child components to be rendered within the themed context.
+- `nonce` (optional): `string` - A unique nonce for the style tag, used for Content Security Policy.
+
+## Example
+
+```tsx
+import { StackTheme } from '@stackframe/stack';
+
+const customTheme = {
+  light: {
+    background: '#ffffff',
+    foreground: '#000000',
+    // ... other color values
+  },
+  dark: {
+    background: '#000000',
+    foreground: '#ffffff',
+    // ... other color values
+  },
+  radius: '0.5rem',
+};
+
+function App() {
+  return (
+    <StackTheme theme={customTheme}>
+      {/* Your app components */}
+    </StackTheme>
+  );
+}
+```
