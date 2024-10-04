@@ -1,14 +1,34 @@
 ---
-slug: sdk/sign-up
+title: SignUp
 ---
 
-The `SignUp` component is a pre-built component that displays all the sign up methods available based on the Stack dashboard configuration.
+# SignUp
 
-<Note>
-  This component does not redirect a signed-in user. To achieve automatic redirection for signed-in users, you can use the `useUser` hook to check the user's sign-in status and perform the redirection if necessary.
-</Note>
-
-![Sign Up Component](../imgs/sign-up.png)
+Renders a sign-up page component with customizable options.
 
 ## Props
-- `fullPage` (boolean): Determines whether the component should occupy the full page. Default is `false`.
+
+- `fullPage` (optional): `boolean` - If true, renders the sign-up page in full-page mode.
+- `automaticRedirect` (optional): `boolean` - If true, automatically redirects the user after successful sign-up.
+- `noPasswordRepeat` (optional): `boolean` - If true, removes the password repeat field from the sign-up form.
+- `extraInfo` (optional): `React.ReactNode` - Additional information to display on the sign-up page.
+- `firstTab` (optional): `'magic-link' | 'password'` - Determines which tab is displayed first on the sign-up page.
+
+## Example
+
+```tsx
+import { SignUp } from '@stackframe/stack';
+
+// Basic usage
+const BasicSignUp = () => <SignUp />;
+
+// Full page sign-up with automatic redirect and magic link as first tab
+const CustomSignUp = () => (
+  <SignUp
+    fullPage={true}
+    automaticRedirect={true}
+    firstTab='magic-link'
+    extraInfo={<p>Welcome to our platform!</p>}
+  />
+);
+```
