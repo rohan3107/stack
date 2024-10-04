@@ -1,0 +1,35 @@
+---
+title: AuthPage
+---
+
+# AuthPage
+
+A component that renders a customizable authentication page for sign-in or sign-up.
+
+## Props
+
+- `type`: `'sign-in' | 'sign-up'` - Determines whether the page is for signing in or signing up.
+- `noPasswordRepeat`: `boolean` (optional) - If true, removes the password repeat field in sign-up form.
+- `firstTab`: `'magic-link' | 'password'` (optional) - Sets the default active tab.
+- `fullPage`: `boolean` (optional) - If true, renders the component as a full page.
+- `automaticRedirect`: `boolean` (optional) - If true, automatically redirects after successful authentication.
+- `extraInfo`: `React.ReactNode` (optional) - Additional information to display below the form.
+- `mockProject`: `object` (optional) - Mock project configuration for testing purposes.
+
+## Example
+
+```tsx
+import { AuthPage } from '@stackframe/stack';
+
+function MyAuthPage() {
+  return (
+    <AuthPage
+      type="sign-up"
+      fullPage={true}
+      firstTab="password"
+      automaticRedirect={true}
+      extraInfo={<p>By signing up, you agree to our Terms of Service.</p>}
+    />
+  );
+}
+```
