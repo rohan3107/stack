@@ -1,4 +1,37 @@
 ---
+title: useStackApp
+---
+
+# useStackApp
+
+A hook that provides access to the StackClientApp object and related functionality.
+
+## Returns
+
+- `isReady`: `boolean` - Indicates if the app is ready.
+- `appInstance`: `StackClientApp | undefined` - The StackClientApp object.
+- `selectChain`: `(chainName: string) => void` - Function to select a blockchain.
+- `connectWallet`: `() => void` - Function to open the wallet connection dialog.
+
+## Example
+
+```tsx
+import { useStackApp } from '@stackframe/stack';
+
+function MyComponent() {
+  const { isReady, appInstance, selectChain, connectWallet } = useStackApp();
+
+  if (!isReady) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <div>Sign In URL: {appInstance?.urls.signIn}</div>
+      <button onClick={() => selectChain('ethereum')}>Select Ethereum</button>
+      <button onClick={connectWallet}>Connect Wallet</button>
+    </div>
+  );
+}
+```---
 slug: sdk/use-stack-app
 ---
 
