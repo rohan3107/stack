@@ -1,0 +1,38 @@
+---
+title: OAuthButtonGroup
+---
+
+# OAuthButtonGroup
+
+Renders a group of OAuth buttons for sign-in or sign-up.
+
+## Props
+
+- `type`: `'sign-in' | 'sign-up'` - Specifies whether the buttons are for sign-in or sign-up.
+- `mockProject` (optional): `{ config: { oauthProviders: { id: string }[] } }` - Mock project configuration for testing purposes.
+
+## Example
+
+```tsx
+import { OAuthButtonGroup } from '@stackframe/stack';
+
+const SignInButtons = () => (
+  <OAuthButtonGroup type='sign-in' />
+);
+
+const SignUpButtons = () => (
+  <OAuthButtonGroup type='sign-up' />
+);
+
+// With mock project (for testing)
+const MockButtons = () => (
+  <OAuthButtonGroup
+    type='sign-in'
+    mockProject={{
+      config: {
+        oauthProviders: [{ id: 'google' }, { id: 'github' }]
+      }
+    }}
+  />
+);
+```
