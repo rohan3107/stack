@@ -1,0 +1,34 @@
+---
+title: MagicLinkSignIn
+---
+
+# MagicLinkSignIn
+
+A React component that renders a magic link sign-in form. It handles email submission and OTP verification.
+
+## Props
+
+This component does not accept any props.
+
+## Example
+
+```tsx
+import { MagicLinkSignIn } from '@stackframe/stack';
+
+function SignInPage() {
+  return (
+    <div>
+      <h1>Sign In</h1>
+      <MagicLinkSignIn />
+    </div>
+  );
+}
+```
+
+The `MagicLinkSignIn` component will render a form with an email input field. When the user submits a valid email:
+
+1. It sends a magic link to the provided email address.
+2. If successful, it displays an OTP (One-Time Password) input component.
+3. The user can then enter the OTP received via email to complete the sign-in process.
+
+If there's an error sending the magic link, it will display an error message under the email input field.
