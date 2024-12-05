@@ -1,21 +1,30 @@
 import { StackAssertionError } from "./utils/errors";
 import { Store } from "./utils/stores";
 
+import crypto from 'crypto';
+
 export class AccessToken {
   constructor(
     public readonly token: string,
   ) {
-    if (token === "undefined") {
+    const undefinedBuffer = Buffer.from('undefined', 'utf-8');
+    const tokenBuffer = Buffer.from(token, 'utf-8');
+    
+    if (crypto.timingSafeEqual(tokenBuffer, undefinedBuffer)) {
       throw new StackAssertionError("Access token is the string 'undefined'; it's unlikely this is the correct value. They're supposed to be unguessable!");
     }
   }
 }
 
+const crypto = require('crypto');
+
 export class RefreshToken {
   constructor(
     public readonly token: string,
   ) {
-    if (token === "undefined") {
+    const unsafeToken = Buffer.from("undefined", 'utf-8');
+    const providedToken = Buffer.from(token, 'utf-8');
+    if (unsafeToken.length !== providedToken.length || !crypto.timingSafeEqual(providedToken, unsafeToken)) {
       throw new StackAssertionError("Refresh token is the string 'undefined'; it's unlikely this is the correct value. They're supposed to be unguessable!");
     }
   }
