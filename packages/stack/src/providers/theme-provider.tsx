@@ -1,5 +1,3 @@
-'use client';
-
 import React from "react";
 import { globalCSS } from "../generated/global-css";
 import { BrowserScript } from "../utils/browser-script";
@@ -91,16 +89,18 @@ export function StackTheme({
     light: { ...DEFAULT_THEME.light, ...theme?.light },
   };
 
+  const cssContent = globalCSS + "\n" + convertColorsToCSS(themeValue);
+
   return (
     <>
       <BrowserScript nonce={nonce} />
       <style
         suppressHydrationWarning // we need this since the nonce can differ between client and server
         nonce={nonce}
-        dangerouslySetInnerHTML={{
-          __html: globalCSS + "\n" + convertColorsToCSS(themeValue),
-        }}
-      />
+        dangerouslySetInnerHTML={undefined}
+      >
+        {cssContent}
+      </style>
       {children}
     </>
   );
