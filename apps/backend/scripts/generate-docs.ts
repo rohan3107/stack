@@ -23,7 +23,9 @@ async function main() {
         const midfix = suffix.slice(0, suffix.lastIndexOf("/route."));
         const importPath = `${importPathPrefix}${suffix}`;
         const urlPath = midfix.replaceAll("[", "{").replaceAll("]", "}");
-        const myModule = require(importPath);
+
+        // Avoid dynamic require by switching to dynamic import
+        const myModule = await import(importPath);
         const handlersByMethod = new Map(
           HTTP_METHODS.map(method => [method, myModule[method]] as const)
             .filter(([_, handler]) => isSmartRouteHandler(handler))
