@@ -77,7 +77,11 @@ export default function RootLayout({
           const { tagName, attributes, innerHTML } = tag;
           return React.createElement(tagName, {
             key: index,
-            dangerouslySetInnerHTML: { __html: innerHTML ?? "" },
+            children: innerHTML && innerHTML.split('\n').map((line, lineIndex) => (
+              <React.Fragment key={lineIndex}>
+                {line}<br />
+              </React.Fragment>
+            )),
             ...attributes,
           });
         })}
