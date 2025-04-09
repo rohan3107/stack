@@ -50,8 +50,8 @@
     }
   },
   "dependencies": {
-    "react-email": "2.1.0",
-    "@react-email/components": "^0.0.14",
+    "react-email": "4.0.4",
+    "@react-email/components": "^0.0.36",
     "@react-email/render": "^0.0.12",
     "lucide-react": "^0.378.0",
     "react-colorful": "^5.6.1",
