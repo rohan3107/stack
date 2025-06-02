@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "next": "^14.2",
+    "next": "^15.2.2",
     "react": "^18",
     "react-dom": "^18",
     "@stackframe/stack": "workspace:*"
