@@ -11,7 +11,7 @@
   "dependencies": {
     "@types/oidc-provider": "^8.5.1",
     "@stackframe/stack-shared": "workspace:*",
-    "oidc-provider": "^8.5.1"
+    "oidc-provider": "^9.6.0"
   },
   "devDependencies": {
     "tsx": "^4.16.2"
