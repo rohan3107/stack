@@ -50,7 +50,7 @@
     }
   },
   "dependencies": {
-    "react-email": "2.1.0",
+    "react-email": "4.0.9",
     "@react-email/components": "^0.0.14",
     "@react-email/render": "^0.0.12",
     "lucide-react": "^0.378.0",
@@ -60,7 +60,7 @@
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.3.0",
     "handlebars": "^4.7.8",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "@stackframe/stack-shared": "workspace:*",
     "@stackframe/stack-ui": "workspace:*"
   },
